@@ -1,0 +1,50 @@
+depart,arrive
+Denver,Frankfurt
+London,Los Angeles
+Paris,Portland
+San Francisco,Seattle
+Sydney,Zurich
+Denver,London
+Frankfurt,Paris
+Los Angeles,Portland
+Seattle,Sydney
+Zurich,San Francisco
+Denver,Paris
+Frankfurt,Portland
+London,Sydney
+Los Angeles,Zurich
+Seattle,San Francisco
+Denver,Zurich
+Frankfurt,Seattle
+London,Portland
+Paris,San Francisco
+Sydney,Los Angeles
+Denver,Portland
+Frankfurt,Sydney
+London,Zurich
+Los Angeles,Paris
+Seattle,Frankfurt
+Denver,Sydney
+Zurich,Portland
+San Francisco,London
+Paris,Seattle
+Los Angeles,Frankfurt
+Denver,San Francisco
+Portland,Sydney
+Zurich,Seattle
+London,Frankfurt
+Paris,Los Angeles
+Denver,Seattle
+Frankfurt,Zurich
+London,Paris
+Portland,San Francisco
+Sydney,Los Angeles
+Denver,Los Angeles
+Frankfurt,San Francisco
+London,Seattle
+Paris,Zurich
+Portland,Sydney
+Denver,Portland
+Zurich,Los Angeles
+San Francisco,Paris
+Seattle,London
