@@ -118,20 +118,20 @@ public class Transactions {
             exec(
                     http("flights")
                             .get("/cgi-bin/welcome.pl?page=search")
-                            .headers(headers2_0)
+                            .headers(headers_4)
                             .resources(
                                     http("/cgi-bin/nav.pl?page=menu&in=flights")
                                             .get("/cgi-bin/nav.pl?page=menu&in=flights")
-                                            .headers(headers2_0),
+                                            .headers(headers_4),
                                     http("/WebTours/images/in_flights.gif")
                                             .get("/WebTours/images/in_flights.gif")
                                             .headers(headers2_2),
                                     http("/WebTours/images/home.gif")
                                             .get("/WebTours/images/home.gif")
-                                            .headers(headers2_3),
+                                            .headers(headers_12),
                                     http("/cgi-bin/reservations.pl?page=welcome")
                                             .get("/cgi-bin/reservations.pl?page=welcome")
-                                            .headers(headers2_0)
+                                            .headers(headers_4)
                                             .check(substring("Find Flight")),
                                     http("/WebTours/images/button_next.gif")
                                             .get("/WebTours/images/button_next.gif")
@@ -172,7 +172,7 @@ public class Transactions {
             exec(
                     http("/cgi-bin/welcome.pl?page=itinerary")
                             .get("/cgi-bin/welcome.pl?page=itinerary")
-                            .headers(headers2_0)
+                            .headers(headers_4)
                             .resources(
                                     http("/WebTours/images/cancelreservation.gif")
                                             .get("/WebTours/images/cancelreservation.gif")
@@ -182,10 +182,10 @@ public class Transactions {
                                             .headers(headers2_12),
                                     http("/cgi-bin/nav.pl?page=menu&in=itinerary")
                                             .get("/cgi-bin/nav.pl?page=menu&in=itinerary")
-                                            .headers(headers2_0),
+                                            .headers(headers_4),
                                     http("/WebTours/images/in_itinerary.gif")
                                             .get("/WebTours/images/in_itinerary.gif")
-                                            .headers(headers2_14)
+                                            .headers(headers_14)
                             )
                             .check(substring("Since user has already logged on"))
             );
@@ -194,14 +194,14 @@ public class Transactions {
                     itineraryPage,
                     http("itinerary")
                             .get("/cgi-bin/itinerary.pl")
-                            .headers(headers2_0)
+                            .headers(headers_4)
             );
     final static ChainBuilder itineraryAfterBuying =
             exec(
                     itineraryPage,
                     http("itinerary")
                             .get("/cgi-bin/itinerary.pl")
-                            .headers(headers2_0)
+                            .headers(headers_4)
                             .check(substring("<center>\n  #{departDate}\n :  #{time} : Flight #{flightNumber} leaves #{depart}  for #{arrive}.<br>  </center>"))
             );
     final static ChainBuilder itineraryBeforeCancel =
@@ -209,16 +209,24 @@ public class Transactions {
                     itineraryPage,
                     http("itinerary")
                             .get("/cgi-bin/itinerary.pl")
-                            .headers(headers2_0)
+                            .headers(headers_4)
                             .check(regex("name=\"flightID\" value=\"(.+?)\"").findAll().saveAs("flightIDs"))
             );
     final static ChainBuilder startRegistration =
             exec(
                     http("startRegistration")
                             .get("/cgi-bin/login.pl?username=&password=&getInfo=true")
-                            .headers(headers3_0)
+                            .headers(headers_4)
                             .check(substring("First time registering?"))
             );
+    final static ChainBuilder prepareRandomUserData =
+            exec(session -> session
+                    .set("login", "#{randomAlphanumeric(6)}")
+                    .set("password", "#{randomAlphanumeric(8)}")
+                    .set("firstName", "#{randomAlphanumeric(5)}")
+                    .set("lastName", "#{randomAlphanumeric(6)}")
+                    .set("streetAddress", "#{randomAlphanumeric(6)} St #{randomInt(1, 100)}")
+                    .set("city", "#{randomAlphanumeric(5)}"));
     final static ChainBuilder fillRegistrationFields =
             exec(
                     http("fillRegistrationFields")
@@ -231,25 +239,25 @@ public class Transactions {
             exec(
                     http("continueAfterRegistration")
                             .get("/cgi-bin/welcome.pl?page=menus")
-                            .headers(headers3_0)
+                            .headers(headers_4)
                             .resources(
-                                    http("request_3")
+                                    http("/cgi-bin/nav.pl?page=menu&in=home")
                                             .get("/cgi-bin/nav.pl?page=menu&in=home")
-                                            .headers(headers3_0),
-                                    http("request_4")
+                                            .headers(headers_4),
+                                    http("/cgi-bin/login.pl?intro=true")
                                             .get("/cgi-bin/login.pl?intro=true")
-                                            .headers(headers3_0)
+                                            .headers(headers_4)
                                             .check(substring("Welcome, <b>#{login}</b>, to the Web Tours reservation pages.")),
-                                    http("request_5")
+                                    http("/WebTours/images/flights.gif")
                                             .get("/WebTours/images/flights.gif")
-                                            .headers(headers3_5),
-                                    http("request_6")
+                                            .headers(headers_10),
+                                    http("/WebTours/images/itinerary.gif")
                                             .get("/WebTours/images/itinerary.gif")
                                             .headers(headers3_6),
-                                    http("request_7")
+                                    http("/WebTours/images/signoff.gif")
                                             .get("/WebTours/images/signoff.gif")
-                                            .headers(headers3_7),
-                                    http("request_8")
+                                            .headers(headers_13),
+                                    http("/WebTours/images/in_home.gif")
                                             .get("/WebTours/images/in_home.gif")
                                             .headers(headers3_8)
                             )
@@ -296,4 +304,23 @@ public class Transactions {
                                     .check(substring("Unfortunately, we could not delete your entire itinerary because of a database synchronization error").notExists())
                                     .check(substring("The server encountered an internal error").notExists())
                     );
+    final static ChainBuilder buyFiveTickets =
+            exec(dataPrepare)
+                    .exec(welcome)
+                    .pause(3)
+                    .exec(login)
+                    .pause(3)
+                    .repeat(5).on(
+                            exec(flights)
+                                    .pause(3)
+                                    .exec(findFlight)
+                                    .pause(3)
+                                    .exec(chooseFlight)
+                                    .pause(3)
+                                    .exec(paymentDetails)
+                                    .pause(3)
+                                    .exec(itineraryAfterBuying)
+                                    .pause(3)
+                    )
+                    .exec(logout);
 }
