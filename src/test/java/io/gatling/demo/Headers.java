@@ -83,23 +83,11 @@ public class Headers {
             Map.entry("If-None-Match", "\"2dd-60c932df4aec0\""),
             Map.entry("Priority", "u=5, i")
     );
-    static Map<CharSequence, String> headers2_0 = Map.ofEntries(
-            Map.entry("Priority", "u=4"),
-            Map.entry("Upgrade-Insecure-Requests", "1")
-    );
 
     static Map<CharSequence, String> headers2_2 = Map.ofEntries(
             Map.entry("Accept", "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5"),
             Map.entry("Priority", "u=5, i")
     );
-
-    static Map<CharSequence, String> headers2_3 = Map.ofEntries(
-            Map.entry("Accept", "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5"),
-            Map.entry("If-Modified-Since", "Fri, 15 Dec 2023 21:35:31 GMT"),
-            Map.entry("If-None-Match", "\"2b0-60c932df4aec0\""),
-            Map.entry("Priority", "u=5, i")
-    );
-
     static Map<CharSequence, String> headers2_6 = Map.ofEntries(
             Map.entry("Content-Type", "multipart/form-data; boundary=----geckoformboundary8a17220bd62f99141663086f123ad634"),
             Map.entry("Origin", "http://localhost:1080"),
@@ -134,46 +122,18 @@ public class Headers {
             Map.entry("If-None-Match", "\"2e6-60c932df4aec0\""),
             Map.entry("Priority", "u=4, i")
     );
-
-    static Map<CharSequence, String> headers2_14 = Map.ofEntries(
-            Map.entry("Accept", "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5"),
-            Map.entry("If-Modified-Since", "Fri, 15 Dec 2023 21:35:31 GMT"),
-            Map.entry("If-None-Match", "\"2dd-60c932df4aec0\""),
-            Map.entry("Priority", "u=5, i")
-    );
-    static Map<CharSequence, String> headers3_0 = Map.ofEntries(
-            Map.entry("Priority", "u=4"),
-            Map.entry("Upgrade-Insecure-Requests", "1")
-    );
-
     static Map<CharSequence, String> headers3_1 = Map.ofEntries(
             Map.entry("Content-Type", "multipart/form-data; boundary=----geckoformboundary243bbf98a166ef94ea7ad0e59ff55ac1"),
             Map.entry("Origin", "http://localhost:1080"),
             Map.entry("Priority", "u=4"),
             Map.entry("Upgrade-Insecure-Requests", "1")
     );
-
-    static Map<CharSequence, String> headers3_5 = Map.ofEntries(
-            Map.entry("Accept", "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5"),
-            Map.entry("If-Modified-Since", "Fri, 15 Dec 2023 21:35:31 GMT"),
-            Map.entry("If-None-Match", "\"2d6-60c932df4aec0\""),
-            Map.entry("Priority", "u=5, i")
-    );
-
     static Map<CharSequence, String> headers3_6 = Map.ofEntries(
             Map.entry("Accept", "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5"),
             Map.entry("If-Modified-Since", "Fri, 15 Dec 2023 21:35:31 GMT"),
             Map.entry("If-None-Match", "\"2dd-60c932df4aec0\""),
             Map.entry("Priority", "u=5, i")
     );
-
-    static Map<CharSequence, String> headers3_7 = Map.ofEntries(
-            Map.entry("Accept", "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5"),
-            Map.entry("If-Modified-Since", "Fri, 15 Dec 2023 21:35:31 GMT"),
-            Map.entry("If-None-Match", "\"2ef-60c932df4aec0\""),
-            Map.entry("Priority", "u=5, i")
-    );
-
     static Map<CharSequence, String> headers3_8 = Map.ofEntries(
             Map.entry("Accept", "image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5"),
             Map.entry("If-Modified-Since", "Fri, 15 Dec 2023 21:35:31 GMT"),
