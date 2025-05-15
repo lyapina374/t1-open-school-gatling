@@ -11,46 +11,46 @@ public class SearchOfMaximum extends Simulation {
         setUp(
                 scn1LoginLogout.injectClosed(
                         incrementConcurrentUsers(1)
-                                .times(5)
-                                .eachLevelLasting(300)
+                                .times(7)
+                                .eachLevelLasting(1320)
                                 .separatedByRampsLasting(60)
-                                .startingFrom(1)
+                                .startingFrom(4)
                 ),
                 scn2SearchTicketWithoutPayment.injectClosed(
                         incrementConcurrentUsers(2)
-                                .times(5)
-                                .eachLevelLasting(300)
+                                .times(7)
+                                .eachLevelLasting(1320)
                                 .separatedByRampsLasting(60)
-                                .startingFrom(2)
+                                .startingFrom(8)
                 ),
                 scn3BuyTicket.injectClosed(
                         incrementConcurrentUsers(3)
-                                .times(5)
-                                .eachLevelLasting(300)
+                                .times(7)
+                                .eachLevelLasting(1320)
                                 .separatedByRampsLasting(60)
-                                .startingFrom(3)
+                                .startingFrom(12)
                 ),
                 scn4ViewItinerary.injectClosed(
                         incrementConcurrentUsers(1)
-                                .times(5)
-                                .eachLevelLasting(300)
+                                .times(7)
+                                .eachLevelLasting(1320)
                                 .separatedByRampsLasting(60)
-                                .startingFrom(1)
+                                .startingFrom(4)
                 ),
                 scn5CancelTicket.injectClosed(
                         incrementConcurrentUsers(1)
-                                .times(5)
-                                .eachLevelLasting(300)
+                                .times(7)
+                                .eachLevelLasting(1320)
                                 .separatedByRampsLasting(60)
-                                .startingFrom(1)
+                                .startingFrom(4)
                 ),
                 scn6UserRegistration.injectClosed(
                         incrementConcurrentUsers(2)
-                                .times(5)
-                                .eachLevelLasting(300)
+                                .times(7)
+                                .eachLevelLasting(1320)
                                 .separatedByRampsLasting(60)
-                                .startingFrom(2)
+                                .startingFrom(8)
                 )
-        ).protocols(httpProtocol);
+        ).protocols(httpProtocol).maxDuration(9600);
     }
 }
